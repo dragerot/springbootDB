@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 //@ContextConfiguration(locations={"classpath:com/guitar/db/applicationTests-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
+//@ActiveProfiles("test")
 public class CVRepositoryTest {
     @Autowired
     private CVRepository cVRepository;
@@ -50,6 +52,7 @@ public class CVRepositoryTest {
         for(CV item : this.cVRepository.findAll()){
             System.out.println(item.getId()+" "+item.getYear()+" "+item.getCompanyName());
         }
+
     }
 
 }
