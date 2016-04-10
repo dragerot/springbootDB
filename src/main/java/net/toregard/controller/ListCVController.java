@@ -4,6 +4,7 @@ import net.toregard.fault.BusinessFault;
 import net.toregard.model.CV;
 import net.toregard.service.CVService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,9 @@ public class ListCVController {
 
     @Autowired
     private CVService cVService;
+
+//    @Autowired
+//    private StringRedisTemplate template;
 
     @RequestMapping(value = "/cv/create/{year}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<MessageCV>  create(@PathVariable("year") String year) {

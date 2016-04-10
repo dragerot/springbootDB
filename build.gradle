@@ -12,14 +12,14 @@ buildscript {
 //		compile.exclude module: "spring-boot-starter-tomcat"
 //	}
 }
-
+apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
 	baseName = 'springdb'
-	version = '0.0.1-SNAPSHOT'
+	version = '1.0'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -37,15 +37,19 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-devtools')
 	compile('org.springframework.boot:spring-boot-starter-jersey')
 	runtime('mysql:mysql-connector-java')
-	//runtime('com.h2database:h2:1.4.187')
-	//compile('com.h2database:h2:1.4.191')
-	//runtime('com.h2database:h2:1.4.191')
-	//testCompile('com.h2database:h2:1.4.191')
-    //testRuntime('com.h2database:h2:1.4.191')
+
+	compile("org.springframework.boot:spring-boot-starter-redis")
+	//compile 'redis.clients:jedis:2.7.0'
+	//compile 'org.springframework.data:spring-data-redis:1.5.0.RELEASE'
+
 	testCompile('com.h2database:h2')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
 
+	testCompile("org.springframework.boot:spring-boot-starter-test")
+	// mandatory dependencies for using Spock
+	compile "org.codehaus.groovy:groovy-all:2.4.1"
+	testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }
 
 task wrapper(type: Wrapper) {
